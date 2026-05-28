@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary: #0A0A0A;
+  --bg-surface: #111111;
+  --bg-elevated: #1A1A1A;
+  --border: #2A2A2A;
+  --text-primary: #F0F0F0;
+  --text-secondary: #888888;
+  --green-bright: #00FF41;
+  --green-mid: #39D353;
+  --green-dim: #0E4429;
+  --blue-accent: #58A6FF;
+  --yellow-accent: #E3B341;
+  --red-accent: #F85149;
+  --purple-accent: #BC8CFF;
+  --orange-accent: #D29922;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: rgba(0, 255, 65, 0.2);
+  color: #00FF41;
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-secondary); }
+
+.scanlines {
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+  pointer-events: none;
+}
+
+.glow-green { text-shadow: 0 0 10px rgba(0, 255, 65, 0.6), 0 0 30px rgba(0, 255, 65, 0.3); }
+.glow-blue  { text-shadow: 0 0 10px rgba(88, 166, 255, 0.6); }
+
+.terminal-border {
+  border-left: 3px solid var(--green-bright);
+  background: #000;
+}
+
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(42, 42, 42, 0.4) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(42, 42, 42, 0.4) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+@layer utilities {
+  .text-green-bright { color: #00FF41; }
+  .border-green-bright { border-color: #00FF41; }
+}
+
+@keyframes sprite-walk-ltr {
+  from { transform: translateX(-80px); }
+  to   { transform: translateX(calc(100vw + 80px)); }
+}
+@keyframes sprite-walk-rtl {
+  from { transform: translateX(calc(100vw + 80px)); }
+  to   { transform: translateX(-80px); }
+}
+@keyframes sprite-bounce {
+  0%, 100% { transform: translateY(0px); }
+  25%       { transform: translateY(-5px) rotate(-3deg); }
+  75%       { transform: translateY(-5px) rotate(3deg); }
+}
