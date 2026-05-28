@@ -21,7 +21,7 @@ export default function Layout({ children }) {
   const [muted, setMuted] = useState(false)
   const audioRef = useRef(null)
 
-  const PLAYLIST = ['/minions_banana.mp3', '/minion_la_bamba.mp3']
+  const PLAYLIST = ['/minions_banana.mp3', '/minion_la_bamba.mp3', '/minions_happy_birthd.mp3']
   const trackRef = useRef(0)
 
   // initialise audio once

@@ -22,6 +22,13 @@ from .serializers import (
 from .utils import get_client_ip, hash_ip, is_rate_limited
 
 
+# ── Health ────────────────────────────────────────────────────────────────────
+
+class HealthView(APIView):
+    def get(self, request):
+        return Response({"status": "ok"})
+
+
 # ── Memories ──────────────────────────────────────────────────────────────────
 
 class MemoryListView(generics.ListAPIView):
