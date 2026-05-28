@@ -104,12 +104,12 @@ export default function Home() {
 
       {/* Contribution preview */}
       <motion.section {...fade(0.1)}>
-        <SectionHeader sub="last 6 months of memory">contribution graph</SectionHeader>
+        <SectionHeader sub="every square is a day · tap the colored ones">the year so far</SectionHeader>
         <MiniGrid memories={memories} />
         <div className="mt-3 flex justify-between items-center">
-          <p className="text-text-secondary text-xs font-mono">{memories?.length ?? 0} memories stored</p>
+          <p className="text-text-secondary text-xs font-mono">{memories?.length ?? 0} moments logged</p>
           <Link to="/contributions" className="text-xs font-mono text-green-bright hover:underline">
-            view full grid →
+            see the full year →
           </Link>
         </div>
       </motion.section>
@@ -118,13 +118,13 @@ export default function Home() {
 
       {/* Recent commits */}
       <motion.section {...fade(0.15)}>
-        <SectionHeader sub="latest life events">recent commits</SectionHeader>
+        <SectionHeader sub="life happening in real time">recent moves</SectionHeader>
         <div className="bg-bg-surface border border-border rounded-md overflow-hidden">
           {commits?.slice(0, 5).map((c) => <CommitRow key={c.id} commit={c} />)}
         </div>
         <div className="mt-3 text-right">
           <Link to="/commits" className="text-xs font-mono text-green-bright hover:underline">
-            git log --all →
+            see everything →
           </Link>
         </div>
       </motion.section>
@@ -133,15 +133,15 @@ export default function Home() {
 
       {/* System stats compact */}
       <motion.section {...fade(0.2)}>
-        <SectionHeader sub="current process state">system stats</SectionHeader>
+        <SectionHeader sub="by the numbers">quick stats</SectionHeader>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
           {[
-            { k: 'projects',       v: '103',           color: '#00FF41' },
-            { k: 'hackathons_won', v: '6',             color: '#E3B341' },
-            { k: 'all_nighters',   v: '30',            color: '#F85149' },
-            { k: 'ideas_shipped',  v: 'classified',    color: '#BC8CFF' },
-            { k: 'version',        v: 'v18.0.0',       color: '#58A6FF' },
-            { k: 'status',         v: 'grinding 24/7', color: '#4ECDC4' },
+            { k: 'things built',        v: '103',           color: '#00FF41' },
+            { k: 'hackathon Ws',        v: '6',             color: '#E3B341' },
+            { k: 'sleepless nights',    v: '30',            color: '#F85149' },
+            { k: 'ideas shipped',       v: 'classified',    color: '#BC8CFF' },
+            { k: 'current version',     v: 'v18.0.0',       color: '#58A6FF' },
+            { k: 'vibe check',          v: 'grinding 24/7', color: '#4ECDC4' },
           ].map(({ k, v, color }) => (
             <div key={k} className="bg-bg-surface border border-border rounded px-3 py-2">
               <p className="text-text-secondary text-xs font-mono">{k}</p>
@@ -151,7 +151,7 @@ export default function Home() {
         </div>
         <div className="mt-3 text-right">
           <Link to="/system" className="text-xs font-mono text-green-bright hover:underline">
-            htop /system →
+            full breakdown →
           </Link>
         </div>
       </motion.section>
@@ -160,12 +160,12 @@ export default function Home() {
 
       {/* CTA strip */}
       <motion.section {...fade(0.25)}>
-        <SectionHeader>interact</SectionHeader>
+        <SectionHeader sub="don't just lurk">say something</SectionHeader>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
           {[
-            { to: '/messages', label: '$ git commit -m "your message"', sub: 'leave a message' },
-            { to: '/oracle', label: '> consult the oracle', sub: 'make a wish' },
-            { to: '/map', label: '$ pin --location "your city"', sub: 'drop a pin on the map' },
+            { to: '/messages', label: '$ drop a message', sub: "talk to me, I don't bite" },
+            { to: '/oracle',   label: '> ask the oracle', sub: 'speak a wish, get a prophecy' },
+            { to: '/map',      label: '$ mark your city', sub: "show me where you're from" },
           ].map(({ to, label, sub }) => (
             <Link
               key={to}

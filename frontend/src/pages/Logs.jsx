@@ -26,7 +26,7 @@ function EntryDetail({ entry, onBack }) {
       exit={{ opacity: 0, x: -20 }}
     >
       <button onClick={onBack} className="text-text-secondary text-xs font-mono hover:text-green-bright mb-6 flex items-center gap-1">
-        ← back to journal
+        ← back
       </button>
       <p className="text-text-secondary text-xs font-mono mb-1">
         {new Date(entry.created_at).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
@@ -65,10 +65,10 @@ export default function Logs() {
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-12">
-      <SectionHeader sub="reflections from age 17 · raw, personal, written">outside the code</SectionHeader>
+      <SectionHeader sub="thoughts I wrote down · raw, honest, personal">things I had to say</SectionHeader>
 
       {loading ? (
-        <p className="text-text-secondary font-mono text-sm animate-pulse">loading journal...</p>
+        <p className="text-text-secondary font-mono text-sm animate-pulse">loading the archives...</p>
       ) : (
         <div className="space-y-1">
           {entries?.map((entry, i) => (

@@ -76,8 +76,8 @@ export default function Commits() {
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-12">
-      <SectionHeader sub="life events written in git syntax · click to expand reflection">
-        git log --life
+      <SectionHeader sub="my life, written in git syntax · tap any card to see the full story">
+        the timeline
       </SectionHeader>
 
       {/* Type filter */}
@@ -99,10 +99,10 @@ export default function Commits() {
       </div>
 
       {loading ? (
-        <p className="text-text-secondary font-mono text-sm animate-pulse">loading commits...</p>
+        <p className="text-text-secondary font-mono text-sm animate-pulse">loading the timeline...</p>
       ) : error ? (
         <div className="terminal-border pl-4 py-3 rounded-r-md">
-          <p className="text-red-accent font-mono text-sm">error: could not fetch commits</p>
+          <p className="text-red-accent font-mono text-sm">couldn't load the timeline, my bad</p>
           <button
             onClick={retry}
             className="mt-2 text-xs font-mono text-green-bright hover:underline"
@@ -114,7 +114,7 @@ export default function Commits() {
         <div className="space-y-3">
           {commits?.map((c) => <CommitCard key={c.id} commit={c} />)}
           {commits?.length === 0 && (
-            <p className="text-text-secondary font-mono text-sm">no commits found for type: {activeType}</p>
+            <p className="text-text-secondary font-mono text-sm">nothing here for <span className="text-green-bright">{activeType}</span> yet</p>
           )}
         </div>
       )}

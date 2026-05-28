@@ -3,11 +3,11 @@ import { useApi } from '../hooks/useApi'
 import { getStats } from '../api'
 import SectionHeader from '../components/SectionHeader'
 
-function StatRow({ label, value, highlight }) {
+function Row({ label, value, highlight }) {
   return (
-    <div className="flex items-baseline justify-between py-2 border-b border-border last:border-0">
-      <span className="font-mono text-text-secondary text-sm">{label}</span>
-      <span className={`font-mono text-sm ${highlight ? 'text-green-bright' : 'text-text-primary'}`}>
+    <div className="flex items-baseline justify-between py-2 border-b border-border last:border-0 gap-4">
+      <span className="font-mono text-text-secondary text-sm shrink-0">{label}</span>
+      <span className={`font-mono text-sm text-right ${highlight ? 'text-green-bright' : 'text-text-primary'}`}>
         {value}
       </span>
     </div>
@@ -19,17 +19,20 @@ export default function System() {
 
   if (loading) return (
     <div className="max-w-3xl mx-auto px-4 py-12">
-      <p className="text-text-secondary font-mono text-sm animate-pulse">loading system stats...</p>
+      <p className="text-text-secondary font-mono text-sm animate-pulse">booting system...</p>
     </div>
   )
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-12">
-      <SectionHeader sub="current process state · htop style">system stats</SectionHeader>
+      <SectionHeader sub="who is this guy exactly · let me explain">
+        system info
+      </SectionHeader>
 
       {stats && (
         <div className="space-y-6">
-          {/* Identity block */}
+
+          {/* Who am I */}
           <motion.div
             initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
             className="bg-bg-surface border border-border rounded-lg overflow-hidden"
@@ -38,72 +41,72 @@ export default function System() {
               <div className="w-2 h-2 rounded-full bg-red-accent" />
               <div className="w-2 h-2 rounded-full bg-yellow-accent" />
               <div className="w-2 h-2 rounded-full bg-green-mid" />
-              <span className="text-text-secondary text-xs font-mono ml-2">identity.yaml</span>
+              <span className="text-text-secondary text-xs font-mono ml-2">~ whoami</span>
             </div>
             <div className="p-4 space-y-1">
               {[
-                ['Name',             stats.name],
-                ['Handle',           stats.handle,           true],
-                ['Version',          stats.version,          true],
-                ['Build Date',       stats.build_date],
-                ['Current Mission',  stats.current_mission,  true],
-                ['Status',           stats.status,           true],
-                ['Uptime',           stats.uptime],
-                ['Location',         stats.location],
-                ['Faith',            stats.faith],
+                ['the government name',    stats.name],
+                ['they call me',           stats.handle,          true],
+                ['current version',        `v${stats.version}`,   true],
+                ['dropped on',             stats.build_date],
+                ['main quest rn',          stats.current_mission, true],
+                ['status',                 stats.status,          true],
+                ['been running for',       stats.uptime],
+                ['base of operations',     stats.location],
+                ['powered by (fr)',        stats.faith],
               ].map(([label, value, hi]) => (
-                <StatRow key={label} label={label} value={value} highlight={hi} />
+                <Row key={label} label={label} value={value} highlight={hi} />
               ))}
             </div>
           </motion.div>
 
-          {/* Fun stats block */}
+          {/* Numbers that matter */}
           <motion.div
             initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
             className="bg-bg-surface border border-border rounded-lg overflow-hidden"
           >
             <div className="px-4 py-2 border-b border-border bg-bg-elevated">
-              <span className="text-text-secondary text-xs font-mono">metrics.yaml</span>
+              <span className="text-text-secondary text-xs font-mono">~ numbers that matter</span>
             </div>
             <div className="p-4 space-y-1">
               {[
-                ['all_nighters_survived',   stats.all_nighters_survived],
-                ['hackathons_entered',      stats.hackathons_entered],
-                ['hackathons_won',          stats.hackathons_won,         true],
-                ['bugs_created',            stats.bugs_created],
-                ['ideas_started',           stats.ideas_started],
-                ['ideas_shipped',           stats.ideas_shipped,          true],
-                ['songs_on_repeat',         stats.songs_on_repeat],
-                ['prayers_said',            stats.prayers_said],
+                ['nights I refused to sleep',          stats.all_nighters_survived],
+                ['hackathons I walked into',           stats.hackathons_entered],
+                ['hackathons I walked out with a W',   stats.hackathons_won,    true],
+                ['bugs blamed on the framework',       stats.bugs_created],
+                ['ideas born at 2am',                  stats.ideas_started],
+                ['ideas that actually shipped',        stats.ideas_shipped,     true],
+                ['songs stuck in my head rn',          stats.songs_on_repeat],
+                ['prayers said (approx.)',             stats.prayers_said],
               ].map(([label, value, hi]) => (
-                <StatRow key={label} label={label} value={value} highlight={hi} />
+                <Row key={label} label={label} value={value} highlight={hi} />
               ))}
             </div>
           </motion.div>
 
-          {/* Process list */}
+          {/* What's running */}
           <motion.div
             initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
-            className="bg-black border border-border rounded-lg p-4 font-mono text-xs space-y-1"
+            className="bg-black border border-border rounded-lg p-4 font-mono text-xs space-y-2"
           >
-            <p className="text-text-secondary mb-2">PID  PROCESS                     CPU    MEM</p>
+            <p className="text-text-secondary mb-3">~ what's running in the background</p>
             {[
-              ['001', 'university.cs_degree',       '██░░░░', '34%'],
-              ['002', 'teenovatex_labs.build',       '███░░░', '78%'],
-              ['003', 'koded_os_v18.ship',           '█████░', '98%'],
-              ['004', 'dsa_prep.leetcode',           '██░░░░', '41%'],
-              ['005', 'faith.daily_practice',        '█████░', '93%'],
-              ['006', 'body_control',                '█░░░░░', '20%'],
-              ['007', 'stackd.bootcamp',             '████░░', '67%'],
-            ].map(([pid, proc, bar, pct]) => (
-              <div key={pid} className="flex items-center gap-4">
-                <span className="text-text-secondary w-8">{pid}</span>
-                <span className="text-green-bright w-36 truncate">{proc}</span>
-                <span className="text-green-mid text-xs">{bar}</span>
-                <span className="text-text-secondary">{pct}</span>
+              ['cs degree (yr 1 of 4)',          '██░░░░', '34%',  '#58A6FF'],
+              ['teenovatex labs',                 '███░░░', '78%',  '#39D353'],
+              ['koded os v18 — shipping',         '█████░', '98%',  '#00FF41'],
+              ['dsa grind (it never stops)',       '██░░░░', '41%',  '#BC8CFF'],
+              ['faith & daily practice',          '█████░', '93%',  '#E3B341'],
+              ['body control & discipline',       '█░░░░░', '20%',  '#F85149'],
+              ['stackd bootcamp',                 '████░░', '67%',  '#4ECDC4'],
+            ].map(([proc, bar, pct, color]) => (
+              <div key={proc} className="flex items-center gap-3">
+                <span style={{ color }} className="flex-1 truncate">{proc}</span>
+                <span className="text-green-mid tracking-widest">{bar}</span>
+                <span className="text-text-secondary w-8 text-right">{pct}</span>
               </div>
             ))}
           </motion.div>
+
         </div>
       )}
     </div>

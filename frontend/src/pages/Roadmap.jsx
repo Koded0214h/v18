@@ -4,9 +4,9 @@ import { getRoadmap } from '../api'
 import SectionHeader from '../components/SectionHeader'
 
 const VERSION_META = {
-  v18: { label: 'v18.0.0', date: 'May 31, 2026', status: 'CURRENT', color: '#00FF41' },
-  v19: { label: 'v19.0.0', date: 'May 31, 2027', status: 'PLANNED', color: '#58A6FF' },
-  v20: { label: 'v20.0.0', date: 'May 31, 2028', status: 'VISION',  color: '#BC8CFF' },
+  v18: { label: 'v18.0.0', date: 'May 31, 2026', status: 'RIGHT NOW', color: '#00FF41' },
+  v19: { label: 'v19.0.0', date: 'May 31, 2027', status: 'THE PLAN',  color: '#58A6FF' },
+  v20: { label: 'v20.0.0', date: 'May 31, 2028', status: 'THE DREAM', color: '#BC8CFF' },
 }
 
 export default function Roadmap() {
@@ -14,10 +14,10 @@ export default function Roadmap() {
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-12">
-      <SectionHeader sub="personal milestones framed as version changelogs">roadmap to v20</SectionHeader>
+      <SectionHeader sub="where I've been · where I'm going · version by version">the plan</SectionHeader>
 
       {loading ? (
-        <p className="text-text-secondary font-mono text-sm animate-pulse">loading roadmap...</p>
+        <p className="text-text-secondary font-mono text-sm animate-pulse">loading the plan...</p>
       ) : (
         <div className="space-y-10">
           {Object.entries(VERSION_META).map(([vKey, meta], vi) => {
@@ -48,7 +48,7 @@ export default function Roadmap() {
                       {meta.status}
                     </span>
                     {items.length > 0 && (
-                      <p className="text-text-secondary text-xs font-mono mt-1">{pct}% complete</p>
+                      <p className="text-text-secondary text-xs font-mono mt-1">{pct}% there</p>
                     )}
                   </div>
                 </div>

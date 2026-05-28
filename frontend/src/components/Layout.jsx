@@ -5,13 +5,13 @@ import BirthdaySprites from './BirthdaySprites'
 
 const NAV = [
   { to: '/home', label: '~/home' },
-  { to: '/contributions', label: 'memories/' },
-  { to: '/commits', label: 'git log' },
-  { to: '/messages', label: 'messages' },
+  { to: '/contributions', label: 'the year' },
+  { to: '/commits', label: 'timeline' },
+  { to: '/messages', label: 'the wall' },
   { to: '/oracle', label: 'oracle' },
-  { to: '/map', label: 'map' },
-  { to: '/logs', label: 'journal' },
-  { to: '/roadmap', label: 'roadmap' },
+  { to: '/map', label: 'world' },
+  { to: '/logs', label: 'thoughts' },
+  { to: '/roadmap', label: 'the plan' },
   { to: '/system', label: 'system' },
 ]
 

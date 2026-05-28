@@ -5,13 +5,13 @@ import { getMemories } from '../api'
 import SectionHeader from '../components/SectionHeader'
 
 const CATEGORY_META = {
-  growth:     { color: '#39D353', label: 'Growth / Achievement' },
-  productive: { color: '#26a641', label: 'Productive / Consistent' },
-  emotional:  { color: '#58A6FF', label: 'Emotional / Relational' },
-  experiment: { color: '#E3B341', label: 'Experimentation' },
-  difficult:  { color: '#F85149', label: 'Difficult / Failure' },
-  faith:      { color: '#BC8CFF', label: 'Faith' },
-  basketball: { color: '#D29922', label: 'Basketball / Physical' },
+  growth:     { color: '#39D353', label: 'locked in & growing' },
+  productive: { color: '#26a641', label: 'consistent' },
+  emotional:  { color: '#58A6FF', label: 'feelings & people' },
+  experiment: { color: '#E3B341', label: 'trying new stuff' },
+  difficult:  { color: '#F85149', label: 'rough patches' },
+  faith:      { color: '#BC8CFF', label: 'faith' },
+  basketball: { color: '#D29922', label: 'moving my body' },
 }
 
 const FILL = [
@@ -105,8 +105,8 @@ export default function Contributions() {
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
-      <SectionHeader sub="age 17 → 18 · click any square to open a memory">
-        memory grid
+      <SectionHeader sub="age 17 → 18 · every colored square is a real day · tap it">
+        the whole year
       </SectionHeader>
 
       {/* Legend */}
@@ -120,7 +120,7 @@ export default function Contributions() {
       </div>
 
       {loading ? (
-        <p className="text-text-secondary font-mono text-sm animate-pulse">loading memories...</p>
+        <p className="text-text-secondary font-mono text-sm animate-pulse">pulling up the archive...</p>
       ) : (
         <div className="overflow-x-auto pb-2">
           <div className="flex gap-[4px]" style={{ minWidth: 'max-content' }}>
@@ -148,7 +148,7 @@ export default function Contributions() {
       )}
 
       <p className="mt-4 text-text-secondary text-xs font-mono">
-        {memories?.length ?? 0} memories · {grid.filter((d) => d.memory).length} days with data
+        {memories?.length ?? 0} moments stored · {grid.filter((d) => d.memory).length} days that meant something
       </p>
 
       <AnimatePresence>

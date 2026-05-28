@@ -37,13 +37,13 @@ export default function WorldMap() {
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
-      <SectionHeader sub={`${allPins.length} people have dropped a pin`}>world map</SectionHeader>
+      <SectionHeader sub={`${allPins.length} people showed up from around the world`}>who's out there</SectionHeader>
 
       {/* Map */}
       <div className="bg-bg-surface border border-border rounded-lg overflow-hidden mb-8" style={{ height: 420 }}>
         {loading ? (
           <div className="h-full flex items-center justify-center">
-            <p className="text-text-secondary font-mono text-sm animate-pulse">loading map...</p>
+            <p className="text-text-secondary font-mono text-sm animate-pulse">plotting coordinates...</p>
           </div>
         ) : (
           <ComposableMap projectionConfig={{ scale: 147 }} style={{ width: '100%', height: '100%' }}>
@@ -108,11 +108,11 @@ export default function WorldMap() {
 
       {/* Drop a pin form */}
       <form onSubmit={handleSubmit} className="bg-bg-surface border border-border rounded-lg p-5 space-y-4">
-        <p className="text-text-secondary text-xs font-mono">$ pin --location "your city"</p>
+        <p className="text-text-secondary text-xs font-mono">where are you?</p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {[
-            { key: 'name', placeholder: 'your name (optional)' },
-            { key: 'location', placeholder: 'city, country' },
+            { key: 'name', placeholder: 'what do I call you?' },
+            { key: 'location', placeholder: 'your city, your country' },
             { key: 'latitude', placeholder: 'latitude (e.g. 6.52)' },
             { key: 'longitude', placeholder: 'longitude (e.g. 3.37)' },
           ].map(({ key, placeholder }) => (
@@ -126,8 +126,8 @@ export default function WorldMap() {
           ))}
         </div>
         <p className="text-text-secondary text-xs font-mono">
-          find coordinates at{' '}
-          <span className="text-blue-accent">maps.google.com</span> → right-click any location
+          find your coords at{' '}
+          <span className="text-blue-accent">maps.google.com</span> → right-click anywhere → copy
         </p>
         {error && <p className="text-red-accent text-xs font-mono">{error}</p>}
         <button
@@ -135,7 +135,7 @@ export default function WorldMap() {
           disabled={sending}
           className="py-2.5 px-6 rounded font-mono text-sm border border-green-bright/60 text-green-bright hover:bg-green-dim/20 disabled:opacity-40 transition-all"
         >
-          {sending ? 'dropping pin...' : '$ drop pin'}
+          {sending ? 'marking the map...' : '$ mark my spot'}
         </button>
       </form>
     </div>

@@ -20,7 +20,7 @@ function WishCard({ wish }) {
       <p className="text-text-primary text-sm font-mono leading-relaxed">"{wish.wish_text}"</p>
       <div className="border-t border-border pt-3">
         <p className="text-xs text-text-secondary font-mono mb-1">
-          <span className="text-purple-accent">oracle</span> responded:
+          <span className="text-purple-accent">the oracle said:</span>
         </p>
         <p className="text-purple-accent text-sm font-mono leading-relaxed italic">{wish.prophecy}</p>
       </div>
@@ -55,7 +55,7 @@ export default function Oracle() {
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-12">
-      <SectionHeader sub="type a wish · the oracle will respond">wish oracle</SectionHeader>
+      <SectionHeader sub="speak a wish for him · the oracle will respond">the oracle</SectionHeader>
 
       {/* Intro */}
       <motion.div
@@ -67,7 +67,7 @@ export default function Oracle() {
           The Oracle is listening...
         </p>
         <p className="text-text-secondary text-xs font-mono mt-2">
-          speak your wish for Abdulrahman. receive a prophecy.
+          speak your wish for him. something will speak back.
         </p>
       </motion.div>
 
@@ -85,7 +85,7 @@ export default function Oracle() {
           onChange={(e) => setForm({ ...form, wish_text: e.target.value })}
           maxLength={500}
           rows={3}
-          placeholder="Type your wish for Abdulrahman..."
+          placeholder="what do you wish for him?"
           className="w-full bg-bg-elevated border border-border rounded px-3 py-2 text-sm font-mono text-text-primary focus:border-purple-accent/60 outline-none transition-colors resize-none"
         />
         <p className="text-xs text-text-secondary text-right">{form.wish_text.length}/500</p>
@@ -115,9 +115,9 @@ export default function Oracle() {
 
       {/* Gallery */}
       <div className="space-y-4">
-        {loading && <p className="text-text-secondary font-mono text-sm animate-pulse">loading prophecies...</p>}
+        {loading && <p className="text-text-secondary font-mono text-sm animate-pulse">summoning past prophecies...</p>}
         {!loading && all.length === 0 && (
-          <p className="text-text-secondary font-mono text-sm text-center">no wishes yet. be the first to speak.</p>
+          <p className="text-text-secondary font-mono text-sm text-center">no one's spoken yet · be the first</p>
         )}
         {all.map((w, i) => <WishCard key={w.id ?? `new-${i}`} wish={w} />)}
       </div>

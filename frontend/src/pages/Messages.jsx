@@ -65,15 +65,15 @@ export default function Messages() {
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-12">
-      <SectionHeader sub="leave a message for Abdulrahman">message wall</SectionHeader>
+      <SectionHeader sub="say something · anything · I read every single one">the wall</SectionHeader>
 
       {/* Form */}
       <form onSubmit={handleSubmit} className="bg-bg-surface border border-border rounded-lg p-5 mb-10 space-y-4">
-        <p className="text-text-secondary text-xs font-mono">$ compose message</p>
+        <p className="text-text-secondary text-xs font-mono">what's on your mind?</p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           <div>
-            <label className="text-xs font-mono text-text-secondary block mb-1">name (optional)</label>
+            <label className="text-xs font-mono text-text-secondary block mb-1">what do I call you?</label>
             <input
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
@@ -82,7 +82,7 @@ export default function Messages() {
             />
           </div>
           <div>
-            <label className="text-xs font-mono text-text-secondary block mb-1">location (optional)</label>
+            <label className="text-xs font-mono text-text-secondary block mb-1">where you at?</label>
             <input
               value={form.location}
               onChange={(e) => setForm({ ...form, location: e.target.value })}
@@ -122,7 +122,7 @@ export default function Messages() {
             onChange={(e) => setForm({ ...form, message: e.target.value })}
             maxLength={280}
             rows={3}
-            placeholder="your message here..."
+            placeholder="say whatever, I'll read it..."
             className="w-full bg-bg-elevated border border-border rounded px-3 py-2 text-sm font-mono text-text-primary focus:border-green-bright/60 outline-none transition-colors resize-none"
           />
           <p className="text-xs text-text-secondary text-right mt-0.5">{form.message.length}/280</p>
@@ -144,7 +144,7 @@ export default function Messages() {
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
               className="text-green-bright text-xs font-mono text-center"
             >
-              ✓ message committed to the wall
+              ✓ got it, thanks for showing up
             </motion.p>
           )}
         </AnimatePresence>
@@ -152,9 +152,9 @@ export default function Messages() {
 
       {/* Feed */}
       <div className="space-y-3">
-        {loading && <p className="text-text-secondary font-mono text-sm animate-pulse">loading messages...</p>}
+        {loading && <p className="text-text-secondary font-mono text-sm animate-pulse">fetching the wall...</p>}
         {!loading && all.length === 0 && (
-          <p className="text-text-secondary font-mono text-sm">no messages yet. be the first.</p>
+          <p className="text-text-secondary font-mono text-sm">wall's empty rn. be the first.</p>
         )}
         {all.map((m, i) => <MessageCard key={m.id ?? `new-${i}`} msg={m} />)}
       </div>
