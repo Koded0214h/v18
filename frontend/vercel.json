@@ -1,6 +1,6 @@
 {
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "https://v18-d876.onrender.com/api/$1" },
+    { "source": "/api/(.*)", "destination": "https://v18-t32e.onrender.com/api/$1" },
     { "source": "/((?!assets|.*\\..*).*)","destination": "/index.html" }
   ],
   "headers": [
