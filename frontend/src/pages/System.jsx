@@ -91,7 +91,7 @@ export default function System() {
           >
             <p className="text-text-secondary mb-3">~ what's running in the background</p>
             {[
-              ['cs degree (yr 1 of 4)',          '██░░░░', '34%',  '#58A6FF'],
+              ['cs degree (yr 2 of 4)',          '██░░░░', '34%',  '#58A6FF'],
               ['teenovatex labs',                 '███░░░', '78%',  '#39D353'],
               ['koded os v18 — shipping',         '█████░', '98%',  '#00FF41'],
               ['dsa grind (it never stops)',       '██░░░░', '41%',  '#BC8CFF'],

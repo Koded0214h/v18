@@ -225,7 +225,7 @@ class StatsView(APIView):
             "faith": "Muslim, alhamdulillah",
             "all_nighters_survived": 30,
             "hackathons_entered": 20,
-            "hackathons_won": 6,
+            "hackathons_won": 7,
             "bugs_created": "∞",
             "ideas_started": 31,
             "ideas_shipped": 7,
